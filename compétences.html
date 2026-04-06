@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compétences - Portfolio Rïad</title>
+  <link rel="stylesheet" href="space-style.css" />
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    .skills-main-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 120px;
+      margin: 80px auto 40px auto;
+      max-width: 1400px;
+    }
+    .skills-col {
+      flex: 1 1 0;
+      min-width: 380px;
+      background: transparent;
+      border-radius: 18px;
+      padding: 0 32px 0 32px;
+    }
+    .skills-col h2 {
+      font-size: 2em;
+      margin-bottom: 40px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #fff;
+      text-align: left;
+      margin-left: 10px;
+      margin-top: 0;
+      text-shadow: 0 2px 8px #000;
+    }
+    .skill-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 38px;
+      gap: 18px;
+    }
+    .skill-logo {
+      width: 54px;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border-radius: 12px;
+      margin-right: 8px;
+    }
+    .skill-logo img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 8px #000);
+    }
+    .skill-label {
+      font-size: 1.25em;
+      font-weight: 700;
+      min-width: 90px;
+      color: #fff;
+      letter-spacing: 0.5px;
+    }
+    .skill-bar-bg {
+      flex: 1;
+      background: #111;
+      border-radius: 8px;
+      height: 10px;
+      overflow: hidden;
+      margin: 0 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.22);
+      border: 1.5px solid #fff;
+    }
+    .skill-bar {
+      height: 100%;
+      border-radius: 8px;
+      background: #fff;
+      transition: width 1s cubic-bezier(.4,2,.6,1);
+    }
+    .skill-percent {
+      font-size: 1.1em;
+      color: #fff;
+      font-weight: 600;
+      min-width: 40px;
+      text-align: right;
+      margin-left: 8px;
+      letter-spacing: 0.5px;
+    }
+    @media (max-width: 1100px) {
+      .skills-main-container {
+        flex-direction: column;
+        gap: 48px;
+      }
+      .skills-col {
+        min-width: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="particles"></div>
+  <header>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="projets.html">Projets</a>
+      <a href="experiences.html">Expériences</a>
+      <a href="synthese.html">Synthèse</a>
+      <a href="veille.html">Veille</a>
+      <a href="competences.html" class="active">Compétences</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <div class="skills-main-container">
+      <div class="skills-col">
+        <h2>Frameworks</h2>
+        <div class="skill-row">
+          <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" alt="WordPress"></span>
+          <span class="skill-label">WordPress</span>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width:60%"></div></div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-plain.svg" alt="Bootstrap"></span>
+          <span class="skill-label">Bootstrap</span>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width:35%"></div></div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain.svg" alt="Laravel"></span>
+          <span class="skill-label">Laravel</span>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width:32%"></div></div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/hugo/hugo-plain.svg" alt="Hugo"></span>
+          <span class="skill-label">Hugo</span>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width:30%"></div></div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-plain.svg" alt="Rails"></span>
+          <span class="skill-label">Rails</span>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width:18%"></div></div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" alt="Tailwind"></span>
+          <span class="skill-label">Tailwind</span>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width:12%"></div></div>
+        </div>
+      </div>
+      <div class="skills-col">
+        <h2>Langages</h2>
+        <div class="skill-row">
+          <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg" alt="PHP"></span>
+          <span class="skill-label">PHP</span>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width:92%"></div></div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-plain.svg" alt="MySQL"></span>
+          <span class="skill-label">MySQL</span>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width:88%"></div></div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg" alt="CSS3"></span>
+          <span class="skill-label">CSS3</span>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width:86%"></div></div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg" alt="JavaScript"></span>
+          <span class="skill-label">JavaScript</span>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width:80%"></div></div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-plain.svg" alt="C#"></span>
+          <span class="skill-label">C#</span>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width:48%"></div></div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-plain.svg" alt="C++"></span>
+          <span class="skill-label">C++</span>
+          <div class="skill-bar-bg"><div class="skill-bar" style="width:18%"></div></div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>© 2026 Rïad Ouabdelkader - Portfolio BTS SIO</footer>
+  <script src="space-script.js"></script>
+</body>
+</html>
