@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Synthèse E5 - Portfolio Rïad</title>
+  <link rel="stylesheet" href="space-style.css" />
+  <style>
+    /* ===== VIOLET PREMIUM PALETTE ===== */
+    :root {
+      --accent: #8B5CF6;
+      --accent-secondary: #A78BFA;
+      --accent-text: #C4B5FD;
+      --card-bg: rgba(12, 10, 28, 0.5);
+      --card-border: rgba(139, 92, 246, 0.16);
+      --card-border-hover: rgba(139, 92, 246, 0.32);
+      --glow: rgba(139, 92, 246, 0.1);
+      --stage1: #818cf8;
+      --stage1-bg: rgba(129, 140, 248, 0.1);
+      --stage1-border: rgba(129, 140, 248, 0.25);
+      --stage2: #34d399;
+      --stage2-bg: rgba(52, 211, 153, 0.1);
+      --stage2-border: rgba(52, 211, 153, 0.25);
+    }
+
+    .synthese-container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* ===== SECTION BLOCKS ===== */
+    .synth-section {
+      background: var(--card-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 36px 40px 32px;
+      margin-bottom: 28px;
+      box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+      animation: synthFadeIn 0.6s ease-out both;
+    }
+    .synth-section:nth-child(2) { animation-delay: 0.08s; }
+    .synth-section:nth-child(3) { animation-delay: 0.16s; }
+    .synth-section:nth-child(4) { animation-delay: 0.24s; }
+    .synth-section:nth-child(5) { animation-delay: 0.32s; }
+    .synth-section:nth-child(6) { animation-delay: 0.40s; }
+
+    @keyframes synthFadeIn {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .synth-section h2 {
+      font-size: 1.2rem;
+      color: #f0f0f8;
+      margin: 0 0 6px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      background: linear-gradient(135deg, #f0f0f8 40%, var(--accent-text));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .synth-section .section-line {
+      width: 40px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin-bottom: 20px;
+      opacity: 0.6;
+    }
+    .synth-section p {
+      color: #d0d0e0;
+      font-size: 0.9rem;
+      line-height: 1.75;
+      margin: 0 0 10px;
+      max-width: 740px;
+    }
+    .synth-section p strong {
+      color: #fff;
+    }
+
+    /* ===== STAGE CARDS GRID ===== */
+    .stage-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .stage-card {
+      background: rgba(10, 10, 20, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 14px;
+      padding: 26px 24px 22px;
+      transition: all 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .stage-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      border-radius: 4px 0 0 4px;
+    }
+    .stage-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
+    }
+
+    .stage-card.s1 { border-color: var(--stage1-border); }
+    .stage-card.s1::before { background: var(--stage1); }
+    .stage-card.s1:hover { border-color: rgba(129, 140, 248, 0.4); box-shadow: 0 8px 28px rgba(129, 140, 248, 0.08); }
+
+    .stage-card.s2 { border-color: var(--stage2-border); }
+    .stage-card.s2::before { background: var(--stage2); }
+    .stage-card.s2:hover { border-color: rgba(52, 211, 153, 0.4); box-shadow: 0 8px 28px rgba(52, 211, 153, 0.08); }
+
+    .stage-card .stage-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .stage-card.s1 .stage-badge { background: var(--stage1-bg); color: #a5b4fc; border: 1px solid var(--stage1-border); }
+    .stage-card.s2 .stage-badge { background: var(--stage2-bg); color: #6ee7b7; border: 1px solid var(--stage2-border); }
+
+    .stage-card h3 {
+      color: #f0f0f8;
+      font-size: 1.02rem;
+      margin: 0 0 10px;
+      font-weight: 600;
+    }
+    .stage-card p {
+      color: #b8b8d0;
+      font-size: 0.85rem;
+      line-height: 1.65;
+      margin: 0 0 14px;
+    }
+    .stage-card .stage-stat {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .stage-card.s1 .stage-stat { background: var(--stage1-bg); color: #a5b4fc; }
+    .stage-card.s2 .stage-stat { background: var(--stage2-bg); color: #6ee7b7; }
+
+    .stage-card ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .stage-card li {
+      color: #c0c0d8;
+      font-size: 0.82rem;
+      line-height: 1.6;
+      padding-left: 16px;
+      margin-bottom: 5px;
+      position: relative;
+    }
+    .stage-card li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      opacity: 0.6;
+    }
+    .stage-card.s1 li::before { background: var(--stage1); }
+    .stage-card.s2 li::before { background: var(--stage2); }
+
+    /* ===== COMPETENCES TABLE ===== */
+    .comp-table-wrap {
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid rgba(139, 92, 246, 0.12);
+      margin-top: 16px;
+    }
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.86rem;
+    }
+    .comp-table thead th {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.12), rgba(139, 92, 246, 0.04));
+      color: var(--accent-text);
+      padding: 14px 18px;
+      text-align: left;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      font-weight: 700;
+      border-bottom: 1px solid rgba(139, 92, 246, 0.15);
+    }
+    .comp-table tbody td {
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: #d0d0e4;
+      vertical-align: middle;
+    }
+    .comp-table tbody tr {
+      transition: background 0.25s ease;
+    }
+    .comp-table tbody tr:hover {
+      background: rgba(139, 92, 246, 0.04);
+    }
+    .comp-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Stage labels in table */
+    .tbl-stage {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .tbl-stage.s1 { background: var(--stage1-bg); color: #a5b4fc; border: 1px solid var(--stage1-border); }
+    .tbl-stage.s2 { background: var(--stage2-bg); color: #6ee7b7; border: 1px solid var(--stage2-border); }
+
+    /* Mission name */
+    .mission-name {
+      color: #eee;
+      font-weight: 500;
+    }
+
+    /* Comp tags */
+    .comp-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      margin: 3px 4px 3px 0;
+      border-radius: 6px;
+      font-size: 0.74rem;
+      font-weight: 500;
+      background: rgba(139, 92, 246, 0.08);
+      border: 1px solid rgba(139, 92, 246, 0.18);
+      color: var(--accent-text);
+      transition: all 0.25s ease;
+    }
+    .comp-tag:hover {
+      background: rgba(139, 92, 246, 0.15);
+      border-color: rgba(139, 92, 246, 0.35);
+    }
+
+    /* ===== PREUVES GRID ===== */
+    .preuves-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 16px;
+    }
+    .preuve-card {
+      background: rgba(10, 10, 20, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 14px;
+      padding: 24px 22px 20px;
+      transition: all 0.3s ease;
+    }
+    .preuve-card:hover {
+      border-color: rgba(139, 92, 246, 0.25);
+      box-shadow: 0 6px 22px rgba(0, 0, 0, 0.25);
+      transform: translateY(-2px);
+    }
+    .preuve-card.s1 { border-left: 3px solid var(--stage1); }
+    .preuve-card.s2 { border-left: 3px solid var(--stage2); }
+
+    .preuve-card h3 {
+      font-size: 0.92rem;
+      margin: 0 0 14px;
+      font-weight: 600;
+    }
+    .preuve-card.s1 h3 { color: #a5b4fc; }
+    .preuve-card.s2 h3 { color: #6ee7b7; }
+
+    .preuve-card ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .preuve-card li {
+      color: #c0c0d8;
+      font-size: 0.84rem;
+      line-height: 1.6;
+      padding: 6px 0 6px 28px;
+      position: relative;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+    .preuve-card li:last-child { border-bottom: none; }
+    .preuve-card li .preuve-icon {
+      position: absolute;
+      left: 0;
+      top: 6px;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    /* ===== BILAN SECTION ===== */
+    .bilan-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .bilan-card {
+      background: rgba(10, 10, 20, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 14px;
+      padding: 26px 24px 22px;
+      transition: all 0.3s ease;
+    }
+    .bilan-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(0, 0, 0, 0.25);
+    }
+    .bilan-card.progression { border-top: 3px solid var(--accent); }
+    .bilan-card.competences { border-top: 3px solid var(--stage2); }
+
+    .bilan-card h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin: 0 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .bilan-card.progression h3 { color: var(--accent-text); }
+    .bilan-card.competences h3 { color: #6ee7b7; }
+
+    .bilan-step {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .bilan-step:last-child { margin-bottom: 0; }
+
+    .bilan-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+    .bilan-step.s1 .bilan-dot { background: var(--stage1); box-shadow: 0 0 8px rgba(129, 140, 248, 0.3); }
+    .bilan-step.s2 .bilan-dot { background: var(--stage2); box-shadow: 0 0 8px rgba(52, 211, 153, 0.3); }
+
+    .bilan-step h4 {
+      font-size: 0.84rem;
+      color: #e0e0f0;
+      margin: 0 0 4px;
+      font-weight: 600;
+    }
+    .bilan-step p {
+      font-size: 0.82rem;
+      color: #a8a8c0;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .bilan-card ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .bilan-card li {
+      color: #c0c0d8;
+      font-size: 0.84rem;
+      line-height: 1.6;
+      padding: 5px 0 5px 16px;
+      position: relative;
+    }
+    .bilan-card li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--stage2);
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    /* ===== GOOGLE SHEET BTN ===== */
+    .sheet-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 26px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(139, 92, 246, 0.06));
+      border: 1px solid rgba(139, 92, 246, 0.25);
+      color: var(--accent-secondary);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      margin-top: 14px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    }
+    .sheet-btn:hover {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(139, 92, 246, 0.1));
+      border-color: rgba(139, 92, 246, 0.45);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(139, 92, 246, 0.15);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .synth-section { padding: 26px 20px 22px; }
+      .stage-grid,
+      .preuves-grid,
+      .bilan-grid { grid-template-columns: 1fr; }
+      .comp-table thead th,
+      .comp-table tbody td { padding: 10px 12px; }
+      .comp-table { font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <div id="particles"></div>
+  <div class="progress-bar"></div>
+
+  <header>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="projets.html">Projets</a>
+      <a href="experiences.html">Expériences</a>
+      <a href="synthese.html" class="active">Synthèse</a>
+      <a href="veille.html">Veille</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <section class="card">
+      <h1>Synthèse — Épreuve E5</h1>
+    </section>
+
+    <div class="synthese-container">
+
+      <!-- ═══════════════════════════════════════ -->
+      <!-- INTRODUCTION                            -->
+      <!-- ═══════════════════════════════════════ -->
+      <section class="synth-section">
+        <h2>Présentation</h2>
+        <div class="section-line"></div>
+        <p>
+          Cette synthèse regroupe l'ensemble de mes <strong>compétences professionnelles</strong>
+          acquises en situation réelle au cours de mes deux stages au
+          <strong>Crédit Agricole Consumer Finance</strong>.
+          Elle illustre ma <strong>progression</strong> : de l'observation en 1<sup>re</sup> année
+          vers l'autonomie technique en 2<sup>e</sup> année.
+        </p>
+      </section>
+
+      <!-- ═══════════════════════════════════════ -->
+      <!-- MES STAGES                              -->
+      <!-- ═══════════════════════════════════════ -->
+      <section class="synth-section">
+        <h2>Mes deux stages</h2>
+        <div class="section-line"></div>
+        <p>
+          Deux stages au sein du même groupe, une progression continue.
+        </p>
+
+        <div class="stage-grid">
+
+          <div class="stage-card s1">
+            <span class="stage-badge">1re année</span>
+            <h3>Service Cybersécurité</h3>
+            <p>Découverte du service cybersécurité. Missions de support, gestion documentaire et assistance aux processus de sécurité.</p>
+            <div class="stage-stat">📋 5 missions réalisées</div>
+            <ul>
+              <li>Gestion documentaire SharePoint</li>
+              <li>Analyse de risques sur ServiceNow</li>
+              <li>Assistance réunions COVALAR</li>
+              <li>Vérifications ATLAS</li>
+              <li>Sensibilisation cybersécurité</li>
+            </ul>
+          </div>
+
+          <div class="stage-card s2">
+            <span class="stage-badge">2e année</span>
+            <h3>Projets techniques</h3>
+            <p>Prise en charge de projets complets avec autonomie technique. Infrastructure, monitoring et maintien en conditions opérationnelles.</p>
+            <div class="stage-stat">🚀 2 projets menés</div>
+            <ul>
+              <li>Centralisation des logs RPA</li>
+              <li>Dashboards de supervision Kibana</li>
+              <li>Mise à jour applicative (obsolescence)</li>
+              <li>Documentation technique livrée</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════ -->
+      <!-- TABLEAU COMPÉTENCES                     -->
+      <!-- ═══════════════════════════════════════ -->
+      <section class="synth-section">
+        <h2>Missions et compétences</h2>
+        <div class="section-line"></div>
+
+        <div class="comp-table-wrap">
+          <table class="comp-table">
+            <thead>
+              <tr>
+                <th>Stage</th>
+                <th>Mission</th>
+                <th>Compétences visées</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="tbl-stage s1">1re année</span></td>
+                <td class="mission-name">Gestion documentaire sécurité</td>
+                <td>
+                  <span class="comp-tag">Gérer le patrimoine informatique</span>
+                  <span class="comp-tag">Organiser son développement professionnel</span>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="tbl-stage s1">1re année</span></td>
+                <td class="mission-name">Analyse de risques — ServiceNow</td>
+                <td>
+                  <span class="comp-tag">Gérer le patrimoine informatique</span>
+                  <span class="comp-tag">Répondre aux incidents et aux demandes</span>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="tbl-stage s1">1re année</span></td>
+                <td class="mission-name">Réunions COVALAR et suivi</td>
+                <td>
+                  <span class="comp-tag">Travailler en mode projet</span>
+                  <span class="comp-tag">Gérer le patrimoine informatique</span>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="tbl-stage s1">1re année</span></td>
+                <td class="mission-name">Vérification cohérence ATLAS</td>
+                <td>
+                  <span class="comp-tag">Gérer le patrimoine informatique</span>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="tbl-stage s1">1re année</span></td>
+                <td class="mission-name">Cyber Day et sensibilisation</td>
+                <td>
+                  <span class="comp-tag">Organiser son développement professionnel</span>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="tbl-stage s2">2e année</span></td>
+                <td class="mission-name">Centralisation logs RPA + dashboards Kibana</td>
+                <td>
+                  <span class="comp-tag">Gérer le patrimoine informatique</span>
+                  <span class="comp-tag">Travailler en mode projet</span>
+                  <span class="comp-tag">Mettre à disposition un service informatique</span>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="tbl-stage s2">2e année</span></td>
+                <td class="mission-name">Mise à jour applicative en obsolescence</td>
+                <td>
+                  <span class="comp-tag">Gérer le patrimoine informatique</span>
+                  <span class="comp-tag">Mettre à disposition un service informatique</span>
+                  <span class="comp-tag">Travailler en mode projet</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════ -->
+      <!-- PREUVES                                 -->
+      <!-- ═══════════════════════════════════════ -->
+      <section class="synth-section">
+        <h2>Preuves fournies</h2>
+        <div class="section-line"></div>
+        <p>
+          Preuves anonymisées accompagnant chaque mission. Aucune donnée confidentielle du Crédit Agricole.
+        </p>
+
+        <div class="preuves-grid">
+          <div class="preuve-card s1">
+            <h3>Stage 1re année</h3>
+            <ul>
+              <li><span class="preuve-icon">📁</span> Captures SharePoint (arborescence, documents)</li>
+              <li><span class="preuve-icon">📄</span> Extraits de documents de sécurité mis à jour</li>
+              <li><span class="preuve-icon">🔍</span> Captures ServiceNow (fiches, grille d'éligibilité)</li>
+              <li><span class="preuve-icon">📝</span> Comptes rendus de réunions COVALAR</li>
+              <li><span class="preuve-icon">🗂️</span> Captures ATLAS (vérifications de cohérence)</li>
+              <li><span class="preuve-icon">🛡️</span> Photos et retour d'expérience du Cyber Day</li>
+            </ul>
+          </div>
+          <div class="preuve-card s2">
+            <h3>Stage 2e année</h3>
+            <ul>
+              <li><span class="preuve-icon">📊</span> Captures des dashboards Kibana</li>
+              <li><span class="preuve-icon">🔎</span> Requêtes KQL utilisées</li>
+              <li><span class="preuve-icon">🏗️</span> Architecture technique du projet de logs</li>
+              <li><span class="preuve-icon">📅</span> Diagramme de Gantt du projet</li>
+              <li><span class="preuve-icon">📋</span> Documentation technique livrée</li>
+              <li><span class="preuve-icon">🔄</span> Liste des applications mises à jour</li>
+              <li><span class="preuve-icon">📸</span> Captures avant / après mise à jour</li>
+              <li><span class="preuve-icon">✅</span> Rapports de tests de non-régression</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════ -->
+      <!-- TABLEAU GOOGLE SHEET                    -->
+      <!-- ═══════════════════════════════════════ -->
+      <section class="synth-section">
+        <h2>Tableau de compétences complet</h2>
+        <div class="section-line"></div>
+        <p>
+          Le tableau détaillé de l'ensemble de mes compétences BTS SIO est disponible sur Google Sheets.
+        </p>
+        <a href="https://docs.google.com/spreadsheets/d/1tDG3W5ASVRRdppdz-1xbIDNq7xRLlz71NisGrtJH8R8/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="sheet-btn">
+          <span>📊</span> Consulter le tableau de compétences
+        </a>
+      </section>
+
+      <!-- ═══════════════════════════════════════ -->
+      <!-- BILAN                                   -->
+      <!-- ═══════════════════════════════════════ -->
+      <section class="synth-section">
+        <h2>Bilan et évolution</h2>
+        <div class="section-line"></div>
+
+        <div class="bilan-grid">
+
+          <div class="bilan-card progression">
+            <h3><span>📈</span> Progression</h3>
+
+            <div class="bilan-step s1">
+              <div class="bilan-dot"></div>
+              <div>
+                <h4>1re année — Découverte</h4>
+                <p>
+                  Rôle d'observation et de support. Découverte des outils internes
+                  (ServiceNow, SharePoint, ATLAS) et des processus de sécurité en entreprise.
+                </p>
+              </div>
+            </div>
+
+            <div class="bilan-step s2">
+              <div class="bilan-dot"></div>
+              <div>
+                <h4>2e année — Autonomie</h4>
+                <p>
+                  Prise en charge de projets techniques complets. Compétences mobilisées
+                  en infrastructure, analyse de données et gestion de projet.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bilan-card competences">
+            <h3><span>🎯</span> Compétences acquises</h3>
+            <ul>
+              <li>Adaptation rapide en environnement professionnel</li>
+              <li>Infrastructure et monitoring (logs, dashboards)</li>
+              <li>Gestion de projet et documentation technique</li>
+              <li>Analyse de risques et conformité sécurité</li>
+              <li>Maintien en conditions opérationnelles du SI</li>
+              <li>Autonomie et montée en compétences continue</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <p style="margin-top: 22px;">
+          Cette progression conforte mon projet professionnel dans les domaines de
+          <strong>l'infrastructure</strong>, des <strong>réseaux</strong> et de la
+          <strong>cybersécurité</strong>.
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 - Portfolio de Rïad Ouabdelkader</p>
+  </footer>
+
+  <script src="space-script.js"></script>
+</body>
+</html>
