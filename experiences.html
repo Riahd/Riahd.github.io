@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expériences - Portfolio Rïad</title>
+<link rel="stylesheet" href="space-style.css" />
+<style>
+  /* ===== VIOLET PREMIUM PALETTE ===== */
+  :root {
+    --accent: #8B5CF6;
+    --accent-secondary: #A78BFA;
+    --accent-text: #C4B5FD;
+    --card-bg: rgba(30, 20, 50, 0.35);
+    --card-border: rgba(167, 139, 250, 0.18);
+    --card-border-hover: rgba(167, 139, 250, 0.32);
+    --glow: rgba(139, 92, 246, 0.12);
+    --glow-strong: rgba(139, 92, 246, 0.22);
+  }
+
+  /* ===== GANTT LINK ===== */
+  .mission-gantt {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    margin: 16px 0 8px;
+    border-radius: 12px;
+    background: rgba(139, 92, 246, 0.06);
+    border: 1px solid rgba(139, 92, 246, 0.18);
+    transition: all 0.3s ease;
+  }
+  .mission-gantt:hover {
+    background: rgba(139, 92, 246, 0.12);
+    border-color: rgba(139, 92, 246, 0.35);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.12);
+  }
+  .mission-gantt a {
+    color: var(--accent-secondary);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: color 0.3s;
+  }
+  .mission-gantt a:hover {
+    color: #fff;
+  }
+  .mission-gantt-icon {
+    font-size: 1.2rem;
+  }
+
+  /* ===== PAGE HEADER ===== */
+  .exp-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 22px 34px;
+    margin-bottom: 36px;
+    background: var(--card-bg);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    box-shadow: 0 6px 22px rgba(0,0,0,0.25);
+  }
+  .exp-hero-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .exp-hero-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(139,92,246,0.18), rgba(139,92,246,0.06));
+    border: 1px solid rgba(139,92,246,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    flex-shrink: 0;
+  }
+  .exp-hero-text h1 {
+    font-size: 1.35rem;
+    margin: 0;
+    line-height: 1.3;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    background: linear-gradient(135deg, #f0f0f8 35%, var(--accent-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .exp-hero-text p {
+    margin: 4px 0 0;
+    font-size: 0.8rem;
+    color: rgba(196,181,253,0.55);
+    letter-spacing: 0.2px;
+    font-weight: 400;
+  }
+  .exp-hero-badge {
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    color: var(--accent-text);
+    background: rgba(139,92,246,0.1);
+    border: 1px solid rgba(139,92,246,0.22);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ===== STAGE HEADER ===== */
+  .stage-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 30px;
+    margin-bottom: 28px;
+    background: linear-gradient(135deg, rgba(139,92,246,0.08) 0%, transparent 60%);
+    border: 1px solid var(--card-border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 14px 14px 0;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  .stage-header h2 {
+    font-size: 1.12rem;
+    margin: 0;
+    color: #f0f0f8;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .stage-header p {
+    margin: 4px 0 0;
+    font-size: 0.78rem;
+    color: rgba(196,181,253,0.5);
+    letter-spacing: 0.2px;
+  }
+
+  /* ===== MISSION CARD ===== */
+  .mission-detail {
+    background: var(--card-bg);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    padding: 0;
+    margin-bottom: 36px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.03) inset;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  }
+  .mission-detail:hover {
+    transform: translateY(-4px);
+    border-color: var(--card-border-hover);
+    box-shadow: 0 16px 50px rgba(0,0,0,0.45), 0 0 30px var(--glow), 0 0 0 1px rgba(255,255,255,0.05) inset;
+  }
+
+  /* Mission header */
+  .mission-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 26px 34px 20px;
+    background: linear-gradient(135deg, rgba(139,92,246,0.06) 0%, transparent 60%);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .mission-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 13px;
+    background: linear-gradient(135deg, rgba(139,92,246,0.15), rgba(139,92,246,0.04));
+    border: 1px solid rgba(139,92,246,0.22);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+  }
+  .mission-header-text h3 {
+    color: #f0f0f8;
+    font-size: 1.15rem;
+    margin: 0;
+    line-height: 1.35;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    background: linear-gradient(135deg, #f0f0f8 30%, var(--accent-text));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .mission-type {
+    color: rgba(196,181,253,0.55);
+    font-size: 0.74rem;
+    margin: 4px 0 0;
+    letter-spacing: 0.4px;
+    font-weight: 400;
+  }
+
+  /* Mission body */
+  .mission-body {
+    padding: 28px 34px 26px;
+  }
+
+  /* Section labels */
+  .mission-body h4 {
+    color: var(--accent-text);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 2.2px;
+    margin: 26px 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(139,92,246,0.1);
+    font-weight: 600;
+  }
+  .mission-body h4:first-child {
+    margin-top: 0;
+  }
+
+  /* Paragraphs */
+  .mission-objectif {
+    color: #d4d4e8;
+    font-size: 0.9rem;
+    line-height: 1.75;
+    margin: 0 0 4px;
+    max-width: 720px;
+  }
+  .mission-objectif strong {
+    color: #fff;
+    font-weight: 600;
+  }
+
+  /* List items */
+  .mission-body ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .mission-body li {
+    color: #c8cede;
+    font-size: 0.88rem;
+    margin-bottom: 8px;
+    line-height: 1.65;
+    padding-left: 18px;
+    position: relative;
+  }
+  .mission-body li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.55;
+    box-shadow: 0 0 8px rgba(139,92,246,0.35);
+  }
+  .mission-body li strong {
+    color: #fff;
+    font-weight: 600;
+  }
+
+  /* ===== CAPTURES GRID ===== */
+  .mission-captures {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    margin: 14px 0 6px;
+  }
+  .mission-capture-item {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.35);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+  .mission-capture-item:hover {
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.45), 0 0 16px var(--glow);
+    border-color: var(--card-border);
+  }
+  .mission-capture-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    cursor: pointer;
+    transition: transform 0.4s ease, filter 0.3s ease;
+    filter: brightness(0.92);
+  }
+  img[src=""], img:not([src]) {
+    display: none;
+  }
+  .mission-capture-item:hover img {
+    transform: scale(1.03);
+    filter: brightness(1);
+  }
+  .mission-capture-item p {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.4);
+    margin: 0;
+    padding: 9px 14px 10px;
+    text-align: center;
+    font-style: italic;
+    background: rgba(0,0,0,0.25);
+    border-top: 1px solid rgba(255,255,255,0.04);
+    line-height: 1.4;
+  }
+
+  /* ===== COMPETENCES ===== */
+  .competences-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 6px;
+  }
+  .competence-block {
+    background: rgba(20,20,20,0.35);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(139,92,246,0.1);
+    border-radius: 10px;
+    padding: 12px 16px;
+    transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  }
+  .competence-block:hover {
+    border-color: rgba(139,92,246,0.25);
+    background: rgba(139,92,246,0.05);
+    box-shadow: 0 4px 16px rgba(139,92,246,0.08);
+  }
+  .competence-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    background: rgba(139,92,246,0.12);
+    border: 1px solid rgba(139,92,246,0.3);
+    color: var(--accent-secondary);
+    letter-spacing: 0.2px;
+  }
+
+  /* ===== LIGHTBOX MODAL ===== */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.92);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+  .modal.active { display: flex; }
+  .modal-content {
+    position: relative;
+    max-width: 92%;
+    max-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: modalIn 0.25s ease;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  .modal-image {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  }
+  .modal-close {
+    position: fixed;
+    top: 24px; right: 32px;
+    color: rgba(255,255,255,0.7);
+    font-size: 28px;
+    cursor: pointer;
+    font-weight: 300;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.25s ease;
+    z-index: 1001;
+  }
+  .modal-close:hover {
+    color: #fff;
+    background: rgba(139,92,246,0.15);
+    border-color: var(--accent);
+    transform: scale(1.1);
+  }
+
+  /* ===== SCROLL REVEAL ===== */
+  .mission-detail, .stage-header {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  }
+  .mission-detail.visible, .stage-header.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .exp-hero { flex-direction: column; align-items: flex-start; padding: 20px 22px; gap: 14px; }
+    .exp-hero-text h1 { font-size: 1.15rem; }
+    .exp-hero-badge { align-self: flex-start; }
+    .mission-header { padding: 20px 20px 16px; gap: 12px; }
+    .mission-body { padding: 22px 20px 20px; }
+    .mission-icon { width: 42px; height: 42px; border-radius: 11px; }
+    .mission-header-text h3 { font-size: 1rem; }
+    .mission-captures { grid-template-columns: 1fr; }
+    .mission-capture-item img { height: 180px; }
+    .modal-close { top: 16px; right: 16px; }
+    .stage-header { padding: 16px 20px; }
+  }
+</style>
+</head>
+<body>
+<div id="particles"></div>
+<header>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="projets.html">Projets</a>
+    <a href="experiences.html" class="active">Expériences</a>
+    <a href="synthese.html">Synthèse</a>
+    <a href="veille.html">Veille</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main class="container">
+  <div class="exp-hero">
+    <div class="exp-hero-left">
+      <div class="exp-hero-icon">💼</div>
+      <div class="exp-hero-text">
+        <h1>Expériences professionnelles</h1>
+        <p>Stages au Crédit Agricole Consumer Finance — Massy (91)</p>
+      </div>
+    </div>
+    <span class="exp-hero-badge">6 MISSIONS</span>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!--        STAGE 1ʳᵉ ANNÉE                 -->
+  <!-- ═══════════════════════════════════════ -->
+
+  <div class="stage-header">
+    <div>
+      <h2>Stage 1<sup>re</sup> année — Service Cybersécurité</h2>
+      <p>Crédit Agricole Consumer Finance — Massy (91)</p>
+    </div>
+  </div>
+
+  <!-- MISSION 1 -->
+  <div class="mission-detail">
+    <div class="mission-header">
+      <div class="mission-icon">📄</div>
+      <div class="mission-header-text">
+        <h3>Mission 1 — Gestion documentaire sécurité</h3>
+        <p class="mission-type">Stage 1ʳᵉ année — Cybersécurité</p>
+      </div>
+    </div>
+    <div class="mission-body">
+      <h4>🎯 Contexte</h4>
+      <p class="mission-objectif">
+        Découverte du service cybersécurité et gestion de la documentation interne liée à la sécurité du SI.
+      </p>
+
+      <h4>⚙️ Tâches réalisées</h4>
+      <ul>
+        <li>Mise à jour de documents internes (procédures, guides de sécurité)</li>
+        <li>Classement et archivage de rapports dans <strong>SharePoint</strong></li>
+        <li>Recherches sur les bonnes pratiques <strong>ANSSI</strong></li>
+      </ul>
+
+      <h4>🖼️ Captures</h4>
+      <div class="mission-captures">
+        <div class="mission-capture-item">
+          <img src="Photo Stage/Architecture de survie Mission 1.jpg" alt="Architecture réseau Digit Combo 3.0">
+          <p>Architecture réseau Digit Combo 3.0 — Crédit Agricole</p>
+        </div>
+        <div class="mission-capture-item">
+          <img src="Photo Stage/Misison 1 photot 2.jpg" alt="Architecture Digit Combo 3.0 — Environnement DEV">
+          <p>Architecture Digit Combo 3.0 — Cloud SILCA Intranet (DEV)</p>
+        </div>
+      </div>
+
+      <h4>📋 Compétences BTS SIO</h4>
+      <div class="competences-grid">
+        <div class="competence-block">
+          <span class="competence-tag">Gérer le patrimoine informatique</span>
+        </div>
+        <div class="competence-block">
+          <span class="competence-tag">Organiser son développement professionnel</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MISSION 2 -->
+  <div class="mission-detail">
+    <div class="mission-header">
+      <div class="mission-icon">🔍</div>
+      <div class="mission-header-text">
+        <h3>Mission 2 — Analyse de risques sur ServiceNow</h3>
+        <p class="mission-type">Stage 1ʳᵉ année — Cybersécurité</p>
+      </div>
+    </div>
+    <div class="mission-body">
+      <h4>🎯 Contexte</h4>
+      <p class="mission-objectif">
+        Contribution à l'analyse de risques via la plateforme <strong>ServiceNow</strong> et la grille d'éligibilité des projets.
+      </p>
+
+      <h4>⚙️ Tâches réalisées</h4>
+      <ul>
+        <li>Catégorisation des projets selon leur niveau de risque (faible/moyen)</li>
+        <li>Lecture et vérification de fiches de risques <strong>ARS/ARL</strong></li>
+        <li>Mise à jour d'informations dans <strong>ServiceNow</strong></li>
+      </ul>
+
+      <h4>🖼️ Captures</h4>
+      <div class="mission-captures">
+        <div class="mission-capture-item">
+          <img src="Photo Stage/Service now.png" alt="ServiceNow — Vulnérabilités conteneurs">
+          <p>ServiceNow — gestion des vulnérabilités</p>
+        </div>
+      </div>
+
+      <h4>📋 Compétences BTS SIO</h4>
+      <div class="competences-grid">
+        <div class="competence-block">
+          <span class="competence-tag">Gérer le patrimoine informatique</span>
+        </div>
+        <div class="competence-block">
+          <span class="competence-tag">Répondre aux incidents et aux demandes d'assistance et d'évolution</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MISSION 3 -->
+  <div class="mission-detail">
+    <div class="mission-header">
+      <div class="mission-icon">🤝</div>
+      <div class="mission-header-text">
+        <h3>Mission 3 — Réunions COVALAR et suivi des décisions</h3>
+        <p class="mission-type">Stage 1ʳᵉ année — Cybersécurité</p>
+      </div>
+    </div>
+    <div class="mission-body">
+      <h4>🎯 Contexte</h4>
+      <p class="mission-objectif">
+        Participation aux comités de validation sécurité (<strong>COVALAR</strong>) et suivi des décisions rendues.
+      </p>
+
+      <h4>⚙️ Tâches réalisées</h4>
+      <ul>
+        <li>Observation des réunions <strong>COVALAR</strong></li>
+        <li>Prise de notes et transmission des décisions</li>
+        <li>Classement des décisions dans <strong>SharePoint</strong></li>
+        <li>Mise à jour du statut des projets après réunion</li>
+      </ul>
+
+      <h4>🖼️ Captures</h4>
+      <div class="mission-captures">
+        <div class="mission-capture-item">
+          <img src="Photo Stage/Covalar.png" alt="Réunion COVALAR">
+          <p>Suivi des décisions COVALAR (anonymisé)</p>
+        </div>
+      </div>
+
+      <h4>📋 Compétences BTS SIO</h4>
+      <div class="competences-grid">
+        <div class="competence-block">
+          <span class="competence-tag">Travailler en mode projet</span>
+        </div>
+        <div class="competence-block">
+          <span class="competence-tag">Gérer le patrimoine informatique</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MISSION 4 -->
+  <div class="mission-detail">
+    <div class="mission-header">
+      <div class="mission-icon">🔎</div>
+      <div class="mission-header-text">
+        <h3>Mission 4 — Vérification de cohérence sur ATLAS</h3>
+        <p class="mission-type">Stage 1ʳᵉ année — Cybersécurité</p>
+      </div>
+    </div>
+    <div class="mission-body">
+      <h4>🎯 Contexte</h4>
+      <p class="mission-objectif">
+        Contrôle de cohérence entre les projets dans <strong>ServiceNow</strong> et le référentiel <strong>ATLAS</strong>.
+      </p>
+
+      <h4>⚙️ Tâches réalisées</h4>
+      <ul>
+        <li>Vérification de la présence des projets ServiceNow dans <strong>ATLAS</strong></li>
+        <li>Mise à jour des métadonnées et informations administratives</li>
+        <li>Contrôle de cohérence entre les deux sources de données</li>
+      </ul>
+
+      <h4>🖼️ Captures</h4>
+      <div class="mission-captures">
+        <div class="mission-capture-item">
+          <img src="Photo Stage/Atlas.png" alt="Référentiel ATLAS">
+          <p>Tableau ATLAS — vérification de la présence des projets</p>
+        </div>
+      </div>
+
+      <h4>📋 Compétences BTS SIO</h4>
+      <div class="competences-grid">
+        <div class="competence-block">
+          <span class="competence-tag">Gérer le patrimoine informatique</span>
+        </div>
+        <div class="competence-block">
+          <span class="competence-tag">Travailler en mode projet</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!--        STAGE 2ᵉ ANNÉE                  -->
+  <!-- ═══════════════════════════════════════ -->
+
+  <div class="stage-header">
+    <div>
+      <h2>Stage 2<sup>e</sup> année — Projets techniques</h2>
+      <p>Crédit Agricole Consumer Finance — Massy (91)</p>
+    </div>
+  </div>
+
+  <!-- MISSION 5 -->
+  <div class="mission-detail">
+    <div class="mission-header">
+      <div class="mission-icon">📊</div>
+      <div class="mission-header-text">
+        <h3>Mission 5 — Centralisation des logs RPA et dashboards</h3>
+        <p class="mission-type">Stage 2ᵉ année — Projets techniques</p>
+      </div>
+    </div>
+    <div class="mission-body">
+      <h4>🎯 Contexte</h4>
+      <p class="mission-objectif">
+        Les logs des processus <strong>RPA</strong> étaient dispersés sur plusieurs sources. L'objectif était de créer des dashboards <strong>Kibana</strong> pour centraliser le suivi en temps réel.
+      </p>
+
+      <h4>⚙️ Tâches réalisées</h4>
+      <ul>
+        <li>Recensement des sources de logs et analyse du besoin métier</li>
+        <li>Création de dashboards <strong>Kibana</strong> pour le monitoring des processus RPA</li>
+        <li>Tests et validation de la cohérence des données affichées</li>
+        <li>Rédaction de la documentation technique du projet</li>
+      </ul>
+
+      <h4>� Diagramme de Gantt</h4>
+      <div class="mission-gantt">
+        <span class="mission-gantt-icon">📊</span>
+        <a href="https://docs.google.com/spreadsheets/d/16JozwaW_MOt9ynwtyYxzVcjd0rl_gFxUHfqEdYyRCrk/edit?usp=sharing" target="_blank" rel="noopener">Voir le diagramme de Gantt du projet (Google Sheets)</a>
+      </div>
+
+      <h4>🖼️ Captures</h4>
+      <div class="mission-captures">
+        <div class="mission-capture-item">
+          <img src="Photo Stage/Kibana 1.jpeg" alt="Dashboard Kibana — supervision RPA">
+          <p>Dashboard Kibana — supervision des logs RPA</p>
+        </div>
+        <div class="mission-capture-item">
+          <img src="Photo Stage/Kibana 2.jpeg" alt="Dashboard Kibana — visualisation logs">
+          <p>Kibana — visualisation et filtrage des logs</p>
+        </div>
+        <div class="mission-capture-item">
+          <img src="Photo Stage/Kibana 3.jpeg" alt="Requête KQL — comptage statuts KO">
+          <p>Requête KQL — comptage des statuts KO</p>
+        </div>
+        <div class="mission-capture-item">
+          <img src="Photo Stage/Kibana 4.jpeg" alt="Dashboard RPA — statuts OK/KO par processus">
+          <p>Dashboard RPA — statuts OK/KO par processus métier</p>
+        </div>
+        <div class="mission-capture-item">
+          <img src="Photo Stage/Kibana 5.jpeg" alt="Documentation — indicateurs RPA">
+          <p>Documentation des indicateurs par répertoire métier</p>
+        </div>
+      </div>
+
+      <h4>📋 Compétences BTS SIO</h4>
+      <div class="competences-grid">
+        <div class="competence-block">
+          <span class="competence-tag">Mettre à disposition des utilisateurs un service informatique</span>
+        </div>
+        <div class="competence-block">
+          <span class="competence-tag">Gérer le patrimoine informatique</span>
+        </div>
+        <div class="competence-block">
+          <span class="competence-tag">Travailler en mode projet</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MISSION 6 -->
+  <div class="mission-detail">
+    <div class="mission-header">
+      <div class="mission-icon">🔄</div>
+      <div class="mission-header-text">
+        <h3>Mission 6 — Mise à jour applicative en obsolescence</h3>
+        <p class="mission-type">Stage 2ᵉ année — Projets techniques</p>
+      </div>
+    </div>
+    <div class="mission-body">
+      <h4>🎯 Contexte</h4>
+      <p class="mission-objectif">
+        Mise à jour d'applications obsolètes du parc informatique pour maintenir la conformité et la sécurité du SI.
+      </p>
+
+      <h4>⚙️ Tâches réalisées</h4>
+      <ul>
+        <li>Identification des applications concernées et analyse d'impact</li>
+        <li>Planification des mises à jour avec les équipes métier</li>
+        <li>Exécution des mises à jour et tests de non-régression</li>
+        <li>Documentation des changements effectués</li>
+      </ul>
+
+      <h4>🖼️ Captures</h4>
+      <div class="mission-captures">
+        <div class="mission-capture-item">
+          <img src="Photo Stage/Obselesance App.jpg" alt="Email mission obsolescence applicative">
+          <p>Email du chef de projet — liste des 50 applications obsolètes</p>
+        </div>
+      </div>
+
+      <h4>📋 Compétences BTS SIO</h4>
+      <div class="competences-grid">
+        <div class="competence-block">
+          <span class="competence-tag">Gérer le patrimoine informatique</span>
+        </div>
+        <div class="competence-block">
+          <span class="competence-tag">Mettre à disposition des utilisateurs un service informatique</span>
+        </div>
+        <div class="competence-block">
+          <span class="competence-tag">Travailler en mode projet</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- Modal Lightbox -->
+<div class="modal" id="imageModal">
+  <span class="modal-close" onclick="document.getElementById('imageModal').classList.remove('active')">&times;</span>
+  <div class="modal-content">
+    <img class="modal-image" id="modalImage" src="" alt="Capture mission">
+  </div>
+</div>
+<footer>© 2026 Rïad Ouabdelkader - Portfolio BTS SIO</footer>
+
+<script src="space-script.js"></script>
+<script>
+  // Lightbox
+  document.querySelectorAll('.mission-capture-item img').forEach(img => {
+    img.addEventListener('click', () => {
+      document.getElementById('modalImage').src = img.src;
+      document.getElementById('imageModal').classList.add('active');
+    });
+  });
+  document.getElementById('imageModal').addEventListener('click', function(e) {
+    if (e.target === this || e.target.classList.contains('modal-close'))
+      this.classList.remove('active');
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') document.getElementById('imageModal').classList.remove('active');
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.mission-detail, .stage-header').forEach(el => observer.observe(el));
+
+  // Remove broken/missing images
+  document.querySelectorAll('.mission-capture-item img').forEach(img => {
+    function removeIfInvalid() {
+      if (!img.complete || img.naturalWidth === 0) {
+        img.closest('.mission-capture-item').remove();
+      }
+    }
+    img.addEventListener('load', removeIfInvalid);
+    img.addEventListener('error', () => img.closest('.mission-capture-item').remove());
+    setTimeout(removeIfInvalid, 100);
+  });
+</script>
+</body>
+</html>

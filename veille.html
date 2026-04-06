@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Veille Cybersécurité - Portfolio Rïad</title>
+  <link rel="stylesheet" href="space-style.css" />
+  <style>
+    /* ===== VIOLET PREMIUM PALETTE (cohérent avec Projets) ===== */
+    :root {
+      --accent: #8B5CF6;
+      --accent-secondary: #A78BFA;
+      --accent-text: #C4B5FD;
+      --card-bg: rgba(30, 20, 50, 0.35);
+      --card-border: rgba(167, 139, 250, 0.18);
+      --card-border-hover: rgba(167, 139, 250, 0.32);
+      --glow: rgba(139, 92, 246, 0.12);
+      --glow-strong: rgba(139, 92, 246, 0.22);
+    }
+
+    /* ===== VEILLE CARD ===== */
+    .veille-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      overflow: hidden;
+      margin-bottom: 36px;
+      box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    }
+    .veille-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--card-border-hover);
+      box-shadow:
+        0 16px 50px rgba(0, 0, 0, 0.45),
+        0 0 30px var(--glow),
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+    }
+
+    /* ===== HEADER ===== */
+    .veille-header {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 26px 36px 22px;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.06) 0%, transparent 60%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .veille-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(139, 92, 246, 0.04));
+      border: 1px solid rgba(139, 92, 246, 0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      flex-shrink: 0;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
+    }
+    .veille-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 8px;
+    }
+    .veille-header-text h3 {
+      color: #f0f0f8;
+      font-size: 1.18rem;
+      margin: 0;
+      line-height: 1.35;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+      background: linear-gradient(135deg, #f0f0f8 30%, var(--accent-text));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .veille-header-text p {
+      color: rgba(196, 181, 253, 0.55);
+      font-size: 0.76rem;
+      margin: 4px 0 0;
+      letter-spacing: 0.4px;
+    }
+
+    /* ===== BODY ===== */
+    .veille-body {
+      padding: 30px 36px 28px;
+    }
+    .veille-body h4 {
+      color: var(--accent-text);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 2.2px;
+      margin: 26px 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+      font-weight: 600;
+    }
+    .veille-body h4:first-child {
+      margin-top: 0;
+    }
+    .veille-body p {
+      color: #d4d4e8;
+      font-size: 0.9rem;
+      line-height: 1.75;
+      margin: 0 0 10px;
+      max-width: 740px;
+    }
+    .veille-body p strong {
+      color: #fff;
+      font-weight: 600;
+    }
+    .veille-body ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .veille-body li {
+      color: #c8cede;
+      font-size: 0.88rem;
+      margin-bottom: 8px;
+      line-height: 1.65;
+      padding-left: 18px;
+      position: relative;
+    }
+    .veille-body li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.55;
+      box-shadow: 0 0 8px rgba(139, 92, 246, 0.35);
+    }
+    .veille-body li strong {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* ===== METHODE GRID ===== */
+    .methode-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 12px 0 6px;
+    }
+    .methode-block {
+      background: rgba(20, 20, 20, 0.35);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(139, 92, 246, 0.1);
+      border-radius: 12px;
+      padding: 18px 20px;
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+    .methode-block:hover {
+      border-color: rgba(139, 92, 246, 0.25);
+      background: rgba(139, 92, 246, 0.05);
+    }
+    .methode-block h5 {
+      color: var(--accent-secondary);
+      font-size: 0.84rem;
+      margin: 0 0 10px;
+      font-weight: 600;
+    }
+
+    /* ===== CVE ALERT BOX ===== */
+    .cve-box {
+      background: rgba(239, 68, 68, 0.06);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      border-left: 3px solid rgba(239, 68, 68, 0.5);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 14px 0;
+    }
+    .cve-box h5 {
+      color: #fca5a5;
+      font-size: 0.92rem;
+      margin: 0 0 10px;
+      font-weight: 700;
+    }
+    .cve-box p {
+      color: #d4d4e8;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      margin: 0 0 8px;
+    }
+    .cve-box a {
+      color: var(--accent-secondary);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(167, 139, 250, 0.3);
+      transition: border-color 0.3s;
+    }
+    .cve-box a:hover {
+      border-color: var(--accent-secondary);
+    }
+
+    /* ===== SOURCE LINKS ===== */
+    .source-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      background: rgba(139, 92, 246, 0.06);
+      border: 1px solid rgba(139, 92, 246, 0.15);
+      color: var(--accent-secondary);
+      text-decoration: none;
+      font-size: 0.82rem;
+      margin: 4px 6px 4px 0;
+      transition: all 0.3s ease;
+      word-break: break-all;
+    }
+    .source-link:hover {
+      background: rgba(139, 92, 246, 0.12);
+      border-color: rgba(139, 92, 246, 0.35);
+      color: #fff;
+    }
+
+    /* ===== CAPTURES GRID ===== */
+    .veille-captures {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      margin: 18px 0 8px;
+    }
+    .veille-capture-item {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(139, 92, 246, 0.15);
+      background: rgba(10, 10, 20, 0.4);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .veille-capture-item:hover {
+      transform: translateY(-3px);
+      border-color: rgba(139, 92, 246, 0.35);
+      box-shadow: 0 8px 30px rgba(139, 92, 246, 0.12);
+    }
+    .veille-capture-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      min-height: 220px;
+      object-fit: cover;
+    }
+    .veille-capture-item figcaption {
+      padding: 12px 16px;
+      color: rgba(196, 181, 253, 0.7);
+      font-size: 0.78rem;
+      text-align: center;
+      letter-spacing: 0.3px;
+      border-top: 1px solid rgba(139, 92, 246, 0.08);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .veille-header { padding: 20px 20px 18px; }
+      .veille-body { padding: 22px 20px 20px; }
+      .methode-grid { grid-template-columns: 1fr; }
+      .veille-captures { grid-template-columns: 1fr; }
+      .veille-header-text h3 { font-size: 1.02rem; }
+    }
+  </style>
+</head>
+<body>
+  <div id="particles"></div>
+  <div class="progress-bar"></div>
+
+  <header>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="projets.html">Projets</a>
+      <a href="experiences.html">Expériences</a>
+      <a href="synthese.html">Synthèse</a>
+      <a href="veille.html" class="active">Veille</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <section class="card">
+      <h1>Veille informatique</h1>
+      <p>Kali Linux et les outils de pentest : évolution, vulnérabilités et exploitation.</p>
+    </section>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- 1. INTRODUCTION                        -->
+    <!-- ═══════════════════════════════════════ -->
+
+    <div class="veille-card">
+      <div class="veille-header">
+        <div class="veille-icon">📖</div>
+        <div class="veille-header-text">
+          <h3>Introduction</h3>
+        </div>
+      </div>
+      <div class="veille-body">
+        <h4>🔍 Qu'est-ce que la veille informatique ?</h4>
+        <p>
+          La <strong>veille informatique</strong> consiste à surveiller en continu les évolutions
+          technologiques et les nouvelles menaces dans le domaine de l'IT. En cybersécurité,
+          elle est indispensable : de nouvelles vulnérabilités sont découvertes chaque jour
+          et les outils utilisés pour les tester évoluent en permanence.
+        </p>
+        <h4>🎯 Pourquoi c'est important pour un pentester ?</h4>
+        <p>
+          Mon objectif professionnel est de devenir <strong>pentester</strong> (testeur d'intrusion).
+          Ce métier consiste à simuler des attaques sur des systèmes pour en identifier les failles
+          avant qu'un vrai attaquant ne les exploite. Pour être efficace, un pentester doit
+          connaître les <strong>derniers outils disponibles</strong>, les <strong>nouvelles vulnérabilités</strong>
+          et les <strong>techniques d'exploitation actuelles</strong>.
+        </p>
+        <p>
+          C'est pourquoi j'ai centré ma veille sur <strong>Kali Linux</strong>, la distribution
+          de référence pour les tests d'intrusion. Suivre son évolution me permet de comprendre
+          comment les outils de pentest s'adaptent aux nouvelles menaces.
+        </p>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- 2. AXE DE VEILLE                       -->
+    <!-- ═══════════════════════════════════════ -->
+
+    <div class="veille-card">
+      <div class="veille-header">
+        <div class="veille-icon"><img src="Photo Stage/Kali linux logo.png" alt="Kali Linux" /></div>
+        <div class="veille-header-text">
+          <h3>Axe de veille — Kali Linux et les outils de pentest</h3>
+          <p>L'outil central de ma veille</p>
+        </div>
+      </div>
+      <div class="veille-body">
+        <h4>🐉 Pourquoi Kali Linux ?</h4>
+        <p>
+          <strong>Kali Linux</strong> est une distribution Linux spécialement conçue pour les tests
+          d'intrusion et l'audit de sécurité. Elle regroupe plus de <strong>600 outils de pentest</strong>
+          préinstallés (Nmap, Metasploit, Burp Suite, Wireshark, etc.) et est maintenue par
+          Offensive Security, une référence dans le domaine de la cybersécurité.
+        </p>
+        <p>
+          À chaque nouvelle version, Kali intègre de <strong>nouveaux outils</strong> qui reflètent
+          l'évolution des techniques d'attaque. Suivre ces mises à jour permet de comprendre
+          quelles sont les menaces actuelles et comment les pentesters s'y adaptent.
+        </p>
+        <h4>⚙️ Ma méthode de veille</h4>
+        <div class="methode-grid">
+          <div class="methode-block">
+            <h5>🔎 Veille active</h5>
+            <ul>
+              <li>Suivi des <strong>releases de Kali Linux</strong> sur <a href="https://www.kali.org/releases/" target="_blank" rel="noopener" style="color: var(--accent-secondary); text-decoration: none; border-bottom: 1px solid rgba(167,139,250,0.3);">kali.org/releases</a></li>
+              <li>Analyse des <strong>nouveaux outils</strong> ajoutés à chaque version</li>
+              <li>Consultation des <strong>avis du CERT-FR</strong> pour identifier les vulnérabilités testables avec Kali</li>
+            </ul>
+          </div>
+          <div class="methode-block">
+            <h5>📡 Veille passive</h5>
+            <ul>
+              <li>Fil d'actualité <strong>X (Twitter)</strong> — comptes spécialisés cybersécurité et pentest</li>
+              <li>Alertes <strong>Gmail</strong> et newsletter <strong>BBC News</strong> — rubrique technologie</li>
+              <li>Bulletins automatiques du <strong>CERT-FR</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- 3. EXEMPLE D'ÉVOLUTION                 -->
+    <!-- ═══════════════════════════════════════ -->
+
+    <div class="veille-card">
+      <div class="veille-header">
+        <div class="veille-icon"><img src="Photo Stage/Kali linux logo.png" alt="Kali Linux" /></div>
+        <div class="veille-header-text">
+          <h3>Exemple d'évolution — Nouveaux outils Kali Linux</h3>
+          <p>Comment les outils de pentest s'adaptent aux nouvelles menaces</p>
+        </div>
+      </div>
+      <div class="veille-body">
+        <h4>📋 Kali Linux 2025.1a (mars 2025)</h4>
+        <p>En analysant cette version, j'ai identifié deux ajouts significatifs :</p>
+        <ul>
+          <li>
+            <strong>hoaxshell</strong> — un générateur de reverse shell Windows qui utilise le protocole
+            HTTP/HTTPS pour établir une connexion discrète avec la machine cible. Cet outil illustre
+            l'évolution vers des techniques de <strong>contournement plus furtives</strong> : le trafic
+            ressemble à du trafic web normal, ce qui le rend difficile à détecter par les pare-feux.
+            Un pentester utilise ce type d'outil pour tester si les défenses réseau détectent
+            les connexions sortantes suspectes.
+          </li>
+          <li>
+            <strong>NetHunter CAN Arsenal</strong> — un module permettant le pentest de <strong>véhicules
+            connectés</strong> (car hacking) depuis un smartphone. Cela montre que le pentest s'étend
+            à de nouveaux domaines (IoT, automobile). Les outils de Kali suivent cette tendance
+            pour permettre aux professionnels de tester ces nouveaux environnements.
+          </li>
+        </ul>
+
+        <h4>📋 Kali Linux 2026.1 (mars 2026)</h4>
+        <p>Version la plus récente au moment de ma veille :</p>
+        <ul>
+          <li><strong>Kernel 6.18</strong> — nouveau noyau Linux avec corrections de sécurité et support matériel étendu, permettant d'utiliser Kali sur davantage de machines.</li>
+          <li><strong>Mises à jour des outils existants</strong> — Nmap, Metasploit, Burp Suite et d'autres outils de pentest ont reçu des mises à jour pour prendre en charge de nouvelles techniques d'exploitation.</li>
+        </ul>
+
+        <h4>💡 Le lien avec le pentest</h4>
+        <p>
+          Chaque nouvelle release de Kali ajoute ou met à jour des outils en réponse aux
+          <strong>nouvelles techniques d'attaque</strong>. Un pentester qui ne suit pas ces évolutions
+          risque de ne pas connaître les outils adaptés aux menaces actuelles. C'est exactement
+          le rôle de la veille : rester informé pour être efficace lors des audits de sécurité.
+        </p>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- 4. EXEMPLE DE VULNÉRABILITÉ            -->
+    <!-- ═══════════════════════════════════════ -->
+
+    <div class="veille-card">
+      <div class="veille-header">
+        <div class="veille-icon">🛡️</div>
+        <div class="veille-header-text">
+          <h3>Exemple de vulnérabilité — Grafana (XSS)</h3>
+          <p>CERTFR-2025-AVI-0597 — Une faille exploitable avec les outils de Kali</p>
+        </div>
+      </div>
+      <div class="veille-body">
+        <h4>⚠️ La vulnérabilité</h4>
+        <div class="cve-box">
+          <h5>CERTFR-2025-AVI-0597 — Multiples vulnérabilités dans Grafana (18 juillet 2025)</h5>
+          <p>
+            De <strong>multiples vulnérabilités</strong> ont été découvertes dans Grafana,
+            un outil de visualisation de données que j'ai moi-même déployé dans mon
+            <strong>Projet 2</strong> (centralisation des logs).
+          </p>
+          <ul>
+            <li><strong>Injection de code indirecte à distance (XSS)</strong> — un attaquant peut injecter du code malveillant dans l'interface web, menant au vol de session ou à l'exécution d'actions au nom de la victime.</li>
+            <li><strong>Contournement de la politique de sécurité</strong> — un attaquant peut contourner les mécanismes de contrôle d'accès.</li>
+          </ul>
+          <p>
+            <strong>Systèmes affectés :</strong> Grafana versions 11.3.x, 11.4.x, 11.5.x, 11.6.x et 12.0.x
+            antérieures aux versions corrigées.
+          </p>
+          <p>
+            <strong>CVE associées :</strong> CVE-2025-6197, CVE-2025-6023.
+          </p>
+          <p>
+            Source : <a href="https://www.cert.ssi.gouv.fr/avis/CERTFR-2025-AVI-0597/" target="_blank" rel="noopener">CERT-FR — CERTFR-2025-AVI-0597</a>
+          </p>
+        </div>
+
+        <h4>🐉 Le lien avec Kali Linux</h4>
+        <p>
+          Ce type de vulnérabilité (XSS) peut être <strong>testé et exploité avec des outils
+          présents dans Kali Linux</strong>. Par exemple :
+        </p>
+        <ul>
+          <li><strong>Burp Suite</strong> — permet d'intercepter les requêtes HTTP et d'injecter des payloads XSS pour vérifier si l'application est vulnérable.</li>
+          <li><strong>XSSer</strong> — outil automatisé de détection et d'exploitation de failles XSS, préinstallé dans Kali.</li>
+        </ul>
+        <p>
+          Lors d'un audit de sécurité (pentest), un testeur utiliserait ces outils pour vérifier
+          si le Grafana déployé est vulnérable <strong>avant qu'un attaquant réel ne le fasse</strong>.
+          C'est ce lien direct entre vulnérabilité publiée et outil de test qui rend la veille
+          sur Kali Linux indispensable.
+        </p>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- 5. EXEMPLE RÉEL — SIA                  -->
+    <!-- ═══════════════════════════════════════ -->
+
+    <div class="veille-card">
+      <div class="veille-header">
+        <div class="veille-icon">🇫🇷</div>
+        <div class="veille-header-text">
+          <h3>Exemple réel — Cyberattaque du SIA (Système d'Information sur les Armes)</h3>
+          <p>Fuite massive de données sensibles en France</p>
+        </div>
+      </div>
+      <div class="veille-body">
+        <h4>📌 Contexte</h4>
+        <p>
+          Une cyberattaque récente a visé le <strong>Système d'Information sur les Armes (SIA)</strong>
+          en France. Selon les sources disponibles (OSINT et réseaux sociaux spécialisés
+          en cybersécurité), les données sensibles de plus de <strong>60 000 personnes</strong>
+          auraient été compromises et mises en vente sur des forums clandestins.
+        </p>
+        <p>Les informations exposées concernent notamment :</p>
+        <ul>
+          <li><strong>Identités</strong> — nom, prénom des détenteurs</li>
+          <li><strong>Adresses</strong> — domiciles des personnes fichées</li>
+          <li><strong>Informations liées à la détention d'armes</strong> — données critiques pouvant mettre en danger la sécurité des personnes</li>
+        </ul>
+
+        <h4>⚠️ Analyse de l'attaque</h4>
+        <div class="cve-box">
+          <h5>Fuite de données — Système d'Information sur les Armes (SIA)</h5>
+          <p>
+            Cette attaque met en évidence plusieurs problèmes majeurs :
+          </p>
+          <ul>
+            <li><strong>Mauvaise sécurisation des accès</strong> — les mécanismes de protection du système étaient insuffisants.</li>
+            <li><strong>Absence ou faiblesse du MFA</strong> — l'authentification multifacteur, mesure de base, n'était pas correctement implémentée.</li>
+            <li><strong>Exposition de données critiques</strong> — des informations liées à la détention d'armes, particulièrement sensibles, étaient accessibles.</li>
+          </ul>
+          <p>
+            <strong>Conséquences potentielles :</strong> risques directs pour la sécurité physique
+            des personnes fichées, exploitation des données à des fins criminelles
+            (cambriolages ciblés, usurpation d'identité).
+          </p>
+        </div>
+
+        <h4>🐉 Le lien avec Kali Linux et le pentest</h4>
+        <p>
+          Ce type d'attaque peut être rapproché des techniques utilisées en pentest.
+          Les outils présents dans <strong>Kali Linux</strong> permettent de simuler
+          ces scénarios pour identifier les failles <strong>avant</strong> qu'un attaquant
+          réel ne les exploite :
+        </p>
+        <ul>
+          <li><strong>SQLmap</strong> — outil automatisé de détection et d'exploitation de failles d'injection SQL, utilisé pour tester si une base de données est accessible via des entrées non sécurisées.</li>
+          <li><strong>Burp Suite</strong> — permet d'analyser les requêtes HTTP et d'identifier les vulnérabilités web (authentification faible, failles d'accès).</li>
+          <li><strong>Hydra</strong> — outil de brute-force pour tester la robustesse des mots de passe et détecter l'absence de MFA.</li>
+          <li><strong>Nikto</strong> — scanner de vulnérabilités web qui identifie les configurations insécurisées sur les serveurs exposés.</li>
+        </ul>
+        <p>
+          Si un pentester avait audité le SIA avec ces outils, il aurait pu identifier
+          les <strong>failles d'accès</strong> et l'<strong>absence de MFA</strong> avant
+          que l'attaque ne se produise. Cette veille me permet de comprendre comment
+          des failles réelles sont exploitées et comment les outils de Kali servent
+          à les <strong>prévenir</strong>.
+        </p>
+
+        <h4>🖼️ Captures</h4>
+        <div class="veille-captures">
+          <figure class="veille-capture-item">
+            <img src="Photo Stage/Weapons Information system.jpg" alt="Revendication de la cyberattaque SIA sur les réseaux sociaux" loading="lazy" />
+            <figcaption>Revendication de la cyberattaque sur les réseaux sociaux — diffusion publique de l'attaque et mise en avant des données compromises</figcaption>
+          </figure>
+          <figure class="veille-capture-item">
+            <img src="Photo Stage/Weapon SIA site.jpg" alt="Forum de vente des données exfiltrées du SIA" loading="lazy" />
+            <figcaption>Forum de mise en vente des données exfiltrées — illustration de la monétisation des informations volées sur des marchés clandestins</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- 6. CONCLUSION                          -->
+    <!-- ═══════════════════════════════════════ -->
+
+    <div class="veille-card">
+      <div class="veille-header">
+        <div class="veille-icon">✅</div>
+        <div class="veille-header-text">
+          <h3>Conclusion</h3>
+        </div>
+      </div>
+      <div class="veille-body">
+        <p>
+          Cette veille m'a permis de relier concrètement les <strong>outils de Kali Linux</strong>
+          à des <strong>vulnérabilités réelles</strong> (Grafana / XSS) et à une
+          <strong>cyberattaque avérée</strong> (fuite de données du SIA).
+        </p>
+        <p>
+          Chaque exemple illustre le même constat : les failles existent, les outils pour
+          les détecter aussi. Le rôle du pentester est d'utiliser ces outils
+          <strong>avant</strong> qu'un attaquant ne le fasse.
+        </p>
+        <p>
+          En tant que futur <strong>pentester</strong>, cette démarche de veille sera
+          indispensable à mon activité professionnelle.
+        </p>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- 7. SOURCES                             -->
+    <!-- ═══════════════════════════════════════ -->
+
+    <div class="veille-card">
+      <div class="veille-header">
+        <div class="veille-icon">📋</div>
+        <div class="veille-header-text">
+          <h3>Sources</h3>
+        </div>
+      </div>
+      <div class="veille-body">
+        <p>Sources utilisées pour cette veille :</p>
+        <div style="margin-top: 10px;">
+          <a href="https://www.kali.org/releases/" target="_blank" rel="noopener" class="source-link">
+            🔗 Kali Linux — Release History
+          </a>
+          <a href="https://www.cert.ssi.gouv.fr/avis/CERTFR-2025-AVI-0597/" target="_blank" rel="noopener" class="source-link">
+            🔗 CERT-FR — CERTFR-2025-AVI-0597 (Grafana)
+          </a>
+          <span class="source-link" style="cursor: default;">
+            🔍 Cyberattaque SIA — sources OSINT / réseaux sociaux spécialisés
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>© 2026 - Portfolio de Rïad Ouabdelkader</p>
+  </footer>
+
+  <script src="space-script.js"></script>
+</body>
+</html>

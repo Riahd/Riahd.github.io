@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projets - Portfolio Rïad</title>
+  <link rel="stylesheet" href="space-style.css" />
+  <style>
+    /* ===== VIOLET PREMIUM PALETTE ===== */
+    :root {
+      --accent: #8B5CF6;
+      --accent-secondary: #A78BFA;
+      --accent-text: #C4B5FD;
+      --card-bg: rgba(30, 20, 50, 0.35);
+      --card-border: rgba(167, 139, 250, 0.18);
+      --card-border-hover: rgba(167, 139, 250, 0.32);
+      --glow: rgba(139, 92, 246, 0.12);
+      --glow-strong: rgba(139, 92, 246, 0.22);
+    }
+
+    /* ===== PROJET CARD — Premium Glassmorphism ===== */
+    .projet-detail {
+      background: var(--card-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 0;
+      margin-bottom: 40px;
+      overflow: hidden;
+      box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    }
+    .projet-detail:hover {
+      transform: translateY(-4px);
+      border-color: var(--card-border-hover);
+      box-shadow:
+        0 16px 50px rgba(0, 0, 0, 0.45),
+        0 0 30px var(--glow),
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+    }
+
+    /* Inner padding wrapper */
+    .projet-body {
+      padding: 32px 36px 30px;
+    }
+
+    /* ===== HEADER — Logo + Title ===== */
+    .projet-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 30px 36px 24px;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.06) 0%, transparent 60%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .projet-logo {
+      width: 72px;
+      height: 72px;
+      border-radius: 14px;
+      object-fit: contain;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 4px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .projet-detail:hover .projet-logo {
+      transform: scale(1.06);
+      box-shadow: 0 6px 20px var(--glow-strong);
+    }
+    /* Placeholder icon when no logo */
+    .projet-logo-placeholder {
+      width: 62px;
+      height: 62px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(139, 92, 246, 0.04));
+      border: 1px solid rgba(139, 92, 246, 0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    }
+    .projet-header-text h3 {
+      color: #f0f0f8;
+      font-size: 1.24rem;
+      margin: 0;
+      line-height: 1.35;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      background: linear-gradient(135deg, #f0f0f8 30%, var(--accent-text));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .projet-type {
+      color: rgba(196, 181, 253, 0.6);
+      font-size: 0.76rem;
+      margin: 5px 0 0;
+      letter-spacing: 0.5px;
+      font-weight: 400;
+    }
+
+    /* ===== SECTION LABELS ===== */
+    .projet-body h4 {
+      color: var(--accent-text);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 2.2px;
+      margin: 28px 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+      font-weight: 600;
+    }
+    .projet-body h4:first-child {
+      margin-top: 0;
+    }
+
+    /* ===== OBJECTIF ===== */
+    .projet-objectif {
+      color: #d4d4e8;
+      font-size: 0.9rem;
+      line-height: 1.75;
+      margin: 0 0 4px;
+      max-width: 720px;
+    }
+    .projet-objectif strong {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* ===== ARCHITECTURE LINE ===== */
+    .projet-archi {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      padding: 7px 16px;
+      border-radius: 8px;
+      background: rgba(139, 92, 246, 0.06);
+      border: 1px solid rgba(139, 92, 246, 0.12);
+      font-size: 0.78rem;
+      color: var(--accent-text);
+      letter-spacing: 0.3px;
+      font-family: 'Courier New', monospace;
+      font-weight: 500;
+    }
+    .projet-archi span {
+      color: rgba(255, 255, 255, 0.3);
+      font-weight: 300;
+    }
+
+    /* ===== ACTIONS LIST ===== */
+    .projet-body ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .projet-body li {
+      color: #c8cede;
+      font-size: 0.88rem;
+      margin-bottom: 8px;
+      line-height: 1.65;
+      padding-left: 18px;
+      position: relative;
+    }
+    .projet-body li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.55;
+      box-shadow: 0 0 8px rgba(139, 92, 246, 0.35);
+    }
+    .projet-body li strong {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* ===== CAPTURES GRID ===== */
+    .projet-captures {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 14px 0 6px;
+    }
+    .projet-capture-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .projet-capture-item:hover {
+      transform: translateY(-3px) scale(1.01);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45), 0 0 16px var(--glow);
+      border-color: var(--card-border);
+    }
+    .projet-capture-item img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+      cursor: pointer;
+      transition: transform 0.4s ease, filter 0.3s ease;
+      filter: brightness(0.92);
+    }
+    img[src=""], img:not([src]) {
+      display: none;
+    }
+    .projet-capture-item:hover img {
+      transform: scale(1.03);
+      filter: brightness(1);
+    }
+    .projet-capture-item p {
+      font-size: 0.74rem;
+      color: rgba(255, 255, 255, 0.4);
+      margin: 0;
+      padding: 10px 14px 12px;
+      text-align: center;
+      font-style: italic;
+      background: rgba(0, 0, 0, 0.25);
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      line-height: 1.45;
+    }
+
+    /* ===== PLACEHOLDERS ===== */
+    .capture-placeholder {
+      background: rgba(139, 92, 246, 0.04);
+      border: 1px dashed rgba(139, 92, 246, 0.18);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 8px 0;
+      color: rgba(255, 255, 255, 0.35);
+      font-size: 0.82rem;
+      font-style: italic;
+    }
+    .capture-placeholder::before {
+      content: '📷 ';
+    }
+
+    /* ===== COMPÉTENCES ===== */
+    .competences-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 6px;
+    }
+    .competence-block {
+      background: rgba(20, 20, 20, 0.35);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(139, 92, 246, 0.1);
+      border-radius: 10px;
+      padding: 14px 18px;
+      transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    }
+    .competence-block:hover {
+      border-color: rgba(139, 92, 246, 0.25);
+      background: rgba(139, 92, 246, 0.05);
+      box-shadow: 0 4px 16px rgba(139, 92, 246, 0.08);
+    }
+    .competence-tag {
+      display: inline-block;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: rgba(139, 92, 246, 0.12);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      color: var(--accent-secondary);
+      letter-spacing: 0.2px;
+    }
+    .comp-detail {
+      margin: 6px 0 2px 16px;
+      font-size: 0.8rem;
+      color: rgba(200, 200, 225, 0.65);
+      line-height: 1.5;
+    }
+
+    /* ===== LIGHTBOX MODAL ===== */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal.active { display: flex; }
+    .modal-content {
+      position: relative;
+      max-width: 92%;
+      max-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: modalIn 0.25s ease;
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .modal-image {
+      max-width: 100%;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    }
+    .modal-close {
+      position: fixed;
+      top: 24px; right: 32px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 28px;
+      cursor: pointer;
+      font-weight: 300;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.25s ease;
+      z-index: 1001;
+    }
+    .modal-close:hover {
+      color: #fff;
+      background: rgba(139, 92, 246, 0.15);
+      border-color: var(--accent);
+      transform: scale(1.1);
+    }
+
+    /* ===== SCROLL REVEAL ===== */
+    .projet-detail {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+    .projet-detail.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== PAGE HEADER ===== */
+    .projets-hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px 34px;
+      margin-bottom: 36px;
+      background: var(--card-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      box-shadow: 0 6px 22px rgba(0,0,0,0.25);
+    }
+    .projets-hero-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .projets-hero-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(139,92,246,0.18), rgba(139,92,246,0.06));
+      border: 1px solid rgba(139,92,246,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+    }
+    .projets-hero-text h1 {
+      font-size: 1.35rem;
+      margin: 0;
+      line-height: 1.3;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      background: linear-gradient(135deg, #f0f0f8 35%, var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .projets-hero-text p {
+      margin: 4px 0 0;
+      font-size: 0.8rem;
+      color: rgba(196,181,253,0.55);
+      letter-spacing: 0.2px;
+      font-weight: 400;
+    }
+    .projets-hero-badge {
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      color: var(--accent-text);
+      background: rgba(139,92,246,0.1);
+      border: 1px solid rgba(139,92,246,0.22);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .projet-header { padding: 22px 20px 18px; gap: 14px; }
+      .projet-body { padding: 24px 20px 22px; }
+      .projet-logo, .projet-logo-placeholder { width: 48px; height: 48px; border-radius: 12px; }
+      .projet-header-text h3 { font-size: 1.05rem; }
+      .projet-captures { grid-template-columns: 1fr; }
+      .projet-capture-item img { height: auto; }
+      .modal-close { top: 16px; right: 16px; }
+      .projet-archi { font-size: 0.72rem; padding: 6px 12px; }
+      .projets-hero { flex-direction: column; align-items: flex-start; padding: 20px 22px; gap: 14px; }
+      .projets-hero-text h1 { font-size: 1.15rem; }
+      .projets-hero-badge { align-self: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div id="particles"></div>
+  <header>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="projets.html" class="active">Projets</a>
+      <a href="experiences.html">Expériences</a>
+      <a href="synthese.html">Synthèse</a>
+      <a href="veille.html">Veille</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="projets-hero">
+      <div class="projets-hero-left">
+        <div class="projets-hero-icon">📂</div>
+        <div class="projets-hero-text">
+          <h1>Mes Projets</h1>
+          <p>Projets réalisés durant ma formation BTS SIO SISR</p>
+        </div>
+      </div>
+      <span class="projets-hero-badge">3 PROJETS</span>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- PROJET 1 : WINDOWS SERVER / AD         -->
+    <!-- ═══════════════════════════════════════ -->
+
+    <div class="projet-detail">
+      <div class="projet-header">
+        <img src="Photo Stage/Win server Logo.jpg" alt="Windows Server" class="projet-logo">
+        <div class="projet-header-text">
+          <h3>Projet 1 — Mise en place d'un environnement Windows Server</h3>
+          <p class="projet-type">🎓 Projet scolaire — BTS SIO SISR</p>
+        </div>
+      </div>
+
+      <div class="projet-body">
+        <h4>🎯 Objectif</h4>
+        <p class="projet-objectif">
+          Créer un domaine <strong>Active Directory</strong> avec gestion des utilisateurs,
+          droits d'accès, intégration de postes clients et configuration <strong>DNS</strong>.
+        </p>
+        <div class="projet-archi">Windows Server <span>→</span> AD DS <span>→</span> DNS <span>→</span> Clients</div>
+
+        <h4>⚙️ Ce que j'ai réalisé</h4>
+        <ul>
+          <li>J'ai installé <strong>Windows Server</strong> et configuré l'adressage IP</li>
+          <li>J'ai déployé <strong>AD DS</strong> et promu le serveur en contrôleur de domaine</li>
+          <li>J'ai créé les utilisateurs, groupes et droits d'accès sur dossiers partagés</li>
+          <li>J'ai intégré un poste client au domaine et configuré le <strong>DNS</strong></li>
+        </ul>
+
+        <h4>🖼️ Captures</h4>
+        <div class="projet-captures">
+          <div class="projet-capture-item">
+            <img src="Photo Stage/Window Server.png" alt="Gestionnaire de serveur — AD DS, DHCP, DNS">
+            <p>Gestionnaire de serveur — rôles AD DS, DHCP, DNS</p>
+          </div>
+          <div class="projet-capture-item">
+            <img src="Photo Stage/Windiws server.png" alt="Serveur — ipconfig et ping client">
+            <p>Serveur — configuration IP et connectivité client</p>
+          </div>
+          <div class="projet-capture-item">
+            <img src="Photo Stage/Client Win server.png" alt="Client — nslookup et ipconfig">
+            <p>Poste client — résolution DNS dans le domaine</p>
+          </div>
+        </div>
+
+        <h4>📋 Compétences BTS SIO</h4>
+        <div class="competences-grid">
+          <div class="competence-block">
+            <span class="competence-tag">Gérer le patrimoine informatique</span>
+            <p class="comp-detail">→ Recenser et identifier les ressources numériques</p>
+            <p class="comp-detail">→ Mettre en place et vérifier les niveaux d'habilitation associés à un service</p>
+          </div>
+          <div class="competence-block">
+            <span class="competence-tag">Mettre à disposition des utilisateurs un service informatique</span>
+            <p class="comp-detail">→ Déployer un service</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- PROJET 2 : CENTRALISATION DES LOGS     -->
+    <!-- ═══════════════════════════════════════ -->
+
+    <div class="projet-detail">
+      <div class="projet-header">
+        <img src="Photo Stage/Grafana Logo.png" alt="Grafana" class="projet-logo">
+        <div class="projet-header-text">
+          <h3>Projet 2 — Centralisation des logs (Promtail / Grafana / Loki)</h3>
+          <p class="projet-type">🎓 Projet scolaire — BTS SIO SISR</p>
+        </div>
+      </div>
+
+      <div class="projet-body">
+        <h4>🎯 Objectif</h4>
+        <p class="projet-objectif">
+          Mettre en place une stack <strong>Promtail + Loki + Grafana</strong> pour collecter,
+          centraliser et visualiser les logs de plusieurs machines via des dashboards.
+        </p>
+        <div class="projet-archi">Promtail <span>→</span> Loki <span>→</span> Grafana</div>
+
+        <h4>⚙️ Ce que j'ai réalisé</h4>
+        <ul>
+          <li>J'ai installé <strong>Loki</strong> comme serveur de stockage de logs</li>
+          <li>J'ai déployé <strong>Promtail</strong> sur les machines pour la collecte</li>
+          <li>J'ai configuré <strong>Grafana</strong> et créé des dashboards de supervision</li>
+          <li>J'ai testé la remontée des logs et vérifié la cohérence des données</li>
+        </ul>
+
+        <h4>🖼️ Captures</h4>
+        <div class="projet-captures">
+          <div class="projet-capture-item">
+            <img src="Photo Stage/Proxmox AP Logs.png" alt="Proxmox — infrastructure de logs">
+            <p>Proxmox — serveur hébergeant la collecte de logs</p>
+          </div>
+          <div class="projet-capture-item">
+            <img src="Photo Stage/Logs Grafana.png" alt="Grafana Logs Drilldown">
+            <p>Grafana — visualisation et filtrage des logs via Loki</p>
+          </div>
+          <div class="projet-capture-item">
+            <img src="Photo Stage/Proxmox Promtail (Logs).png" alt="Service Promtail actif">
+            <p>Service Promtail actif — collecte et envoi vers Loki</p>
+          </div>
+        </div>
+
+        <h4>📋 Compétences BTS SIO</h4>
+        <div class="competences-grid">
+          <div class="competence-block">
+            <span class="competence-tag">Gérer le patrimoine informatique</span>
+            <p class="comp-detail">→ Recenser et identifier les ressources numériques</p>
+          </div>
+          <div class="competence-block">
+            <span class="competence-tag">Travailler en mode projet</span>
+            <p class="comp-detail">→ Analyser les objectifs et les modalités d'organisation d'un projet</p>
+            <p class="comp-detail">→ Planifier les activités</p>
+          </div>
+          <div class="competence-block">
+            <span class="competence-tag">Mettre à disposition des utilisateurs un service informatique</span>
+            <p class="comp-detail">→ Déployer un service</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- PROJET 3 : STORMSHIELD                 -->
+    <!-- ═══════════════════════════════════════ -->
+
+    <div class="projet-detail">
+      <div class="projet-header">
+        <div class="projet-logo-placeholder">🛡️</div>
+        <div class="projet-header-text">
+          <h3>Projet 3 — Configuration Stormshield (pare-feu / VPN SSL / filtrage)</h3>
+          <p class="projet-type">🎓 Projet scolaire — BTS SIO SISR</p>
+        </div>
+      </div>
+
+      <div class="projet-body">
+        <h4>🎯 Objectif</h4>
+        <p class="projet-objectif">
+          Configurer un pare-feu <strong>Stormshield</strong> pour sécuriser un réseau :
+          règles de filtrage, <strong>VPN SSL</strong> pour l'accès distant et politiques de sécurité.
+        </p>
+        <div class="projet-archi">Clients <span>→</span> Stormshield <span>→</span> Internet (VPN SSL / Filtrage)</div>
+
+        <h4>⚙️ Ce que j'ai réalisé</h4>
+        <ul>
+          <li>J'ai configuré les interfaces réseau et les zones de sécurité</li>
+          <li>J'ai créé les règles de filtrage et mis en place un <strong>VPN SSL</strong></li>
+          <li>J'ai configuré le filtrage URL et les politiques de sécurité</li>
+          <li>J'ai testé les accès et vérifié le bon fonctionnement des règles</li>
+        </ul>
+
+        <h4>🖼️ Captures</h4>
+        <img src="Photo Stage/Stromshield Filtrage et Nat.png" alt="Stormshield — Filtrage et NAT" style="width:100%; max-width:700px; border-radius:8px; margin:10px 0; border:1px solid rgba(255,255,255,0.1);">
+        <p style="font-size:0.82rem; color:#93c5fd; margin:0 0 16px; font-style:italic;">Capture 1 : Interface Stormshield — règles de filtrage et NAT</p>
+        <img src="Photo Stage/Vpn Ip sec stomshield .png" alt="Stormshield — VPN IPsec" style="width:100%; max-width:700px; border-radius:8px; margin:10px 0; border:1px solid rgba(255,255,255,0.1);">
+        <p style="font-size:0.82rem; color:#93c5fd; margin:0 0 16px; font-style:italic;">Capture 2 : Configuration du VPN IPsec</p>
+
+        <h4>📋 Compétences BTS SIO</h4>
+        <div class="competences-grid">
+          <div class="competence-block">
+            <span class="competence-tag">Gérer le patrimoine informatique</span>
+            <p class="comp-detail">→ Vérifier le respect des règles d'utilisation des ressources numériques</p>
+          </div>
+          <div class="competence-block">
+            <span class="competence-tag">Travailler en mode projet</span>
+            <p class="comp-detail">→ Analyser les objectifs et les modalités d'organisation d'un projet</p>
+            <p class="comp-detail">→ Planifier les activités</p>
+          </div>
+          <div class="competence-block">
+            <span class="competence-tag">Mettre à disposition des utilisateurs un service informatique</span>
+            <p class="comp-detail">→ Déployer un service</p>
+            <p class="comp-detail">→ Réaliser les tests d'intégration et d'acceptation d'un service</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Modal Lightbox -->
+  <div class="modal" id="imageModal">
+    <span class="modal-close" onclick="document.getElementById('imageModal').classList.remove('active')">&times;</span>
+    <div class="modal-content">
+      <img class="modal-image" id="modalImage" src="" alt="Capture projet">
+    </div>
+  </div>
+  <footer>© 2026 Rïad Ouabdelkader - Portfolio BTS SIO</footer>
+
+  <script src="space-script.js"></script>
+  <script>
+    // Lightbox
+    document.querySelectorAll('.projet-capture-item img').forEach(img => {
+      img.addEventListener('click', () => {
+        document.getElementById('modalImage').src = img.src;
+        document.getElementById('imageModal').classList.add('active');
+      });
+    });
+    document.getElementById('imageModal').addEventListener('click', function(e) {
+      if (e.target === this || e.target.classList.contains('modal-close'))
+        this.classList.remove('active');
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') document.getElementById('imageModal').classList.remove('active');
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.projet-detail').forEach(card => observer.observe(card));
+
+    // Remove broken/missing images
+    document.querySelectorAll('.projet-capture-item img').forEach(img => {
+      function removeIfInvalid() {
+        if (!img.complete || img.naturalWidth === 0) {
+          img.closest('.projet-capture-item').remove();
+        }
+      }
+      img.addEventListener('load', removeIfInvalid);
+      img.addEventListener('error', () => img.closest('.projet-capture-item').remove());
+      setTimeout(removeIfInvalid, 100);
+    });
+  </script>
+</body>
+</html>
